@@ -21,6 +21,7 @@ return {
     vim.g.startify_custom_header_end = 'StartifyHeader'
     vim.g.startify_bookmarks = {
       { r = '~/repos' },
+      { c = '~/.config/nvim/' },
     }
 
     vim.g.startify_lists = {
