@@ -91,13 +91,13 @@ function M.setup()
       end
     end,
   })
-
   -- Diagnostic Config
   -- See :help vim.diagnostic.Opts
   vim.diagnostic.config {
     severity_sort = true,
     float = { border = 'rounded', source = 'if_many' },
-    underline = { severity = vim.diagnostic.severity.ERROR },
+    -- underline = { severity = vim.diagnostic.severity.ERROR },
+    underline = true,
     signs = vim.g.have_nerd_font and {
       text = {
         [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -107,6 +107,7 @@ function M.setup()
       },
     } or {},
     virtual_text = {
+      current_line = true,
       source = 'if_many',
       spacing = 2,
       format = function(diagnostic)
