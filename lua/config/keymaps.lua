@@ -33,6 +33,11 @@ vim.keymap.set('n', 'ML', '<C-w>L', { desc = 'Move window to the right' })
 vim.keymap.set('n', 'MJ', '<C-w>J', { desc = 'Move window to the lower' })
 vim.keymap.set('n', 'MK', '<C-w>K', { desc = 'Move window to the upper' })
 
+vim.keymap.set('n', '<A-Left>', '<C-w><', { desc = 'Resize split left' })
+vim.keymap.set('n', '<A-Right>', '<C-w>>', { desc = 'Resize split right' })
+vim.keymap.set('n', '<A-Up>', '<C-w>+', { desc = 'Resize split up' })
+vim.keymap.set('n', '<A-Down>', '<C-w>-', { desc = 'Resize split down' })
+
 vim.keymap.set('n', '<leader>tt', function()
   local buf_dir = vim.fn.expand '%:p:h'
 
