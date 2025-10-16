@@ -3,10 +3,10 @@ return {
   branch = 'master',
   init = function()
     vim.g.VM_maps = {
-      ['Find Under'] = '<A-j>', -- Alt+j → select next match
-      ['Find Subword Under'] = '<A-j>',
-      ['Skip Region'] = '<A-k>', -- Alt+k → skip current
-      ['Remove Region'] = '<A-l>', -- Alt+l → deselect current
+      ['Find Under'] = '<A-m>', -- Alt+j → select next match
+      ['Find Subword Under'] = '<A-m>',
+      ['Skip Region'] = '<A-r>', -- Alt+k → skip current
+      ['Remove Region'] = '<A-r>', -- Alt+l → deselect current
     }
 
     vim.cmd [[

@@ -29,7 +29,7 @@ return {
       { type = 'sessions', header = { '   Sessions' } },
       { type = 'bookmarks', header = { '   Bookmarks' } },
     }
-
+    vim.g.change_to_dir = true
     vim.g.startify_session_autoload = 1
     vim.g.startify_change_to_vcs_root = 1
   end,

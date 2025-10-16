@@ -1,31 +1,25 @@
 return {
   'stevearc/oil.nvim',
-  cmd = { 'Oil' }, -- load only when :Oil is used
+  cmd = { 'Oil' },
   keys = {
     { '<leader>e', '<cmd>Oil --float<CR>', desc = 'Open Oil (float)' },
   },
-  dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if you prefer nvim-web-devicons
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   lazy = false,
   config = function()
+    -- Set float highlights before calling setup
+    vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+    vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = 'none' })
+
     require('oil').setup {
-      -- Optional: customize settings
-      default_file_explorer = true, -- replaces netrw
-      columns = {
-        'icon',
-      },
-      view_options = {
-        show_hidden = false,
-      },
+      default_file_explorer = true,
+      columns = { 'icon' },
+      view_options = { show_hidden = false },
       float = {
-        -- padding = 2,
         max_width = 0.6,
         max_height = 0.6,
-        border = 'rounded',
-        win_options = {
-          winblend = 12,
-        },
+        border = 'rounded', -- you can also try 'single' or 'none'
       },
-      -- See :help oil-actions for a list of all available actions
       keymaps = {
         ['g?'] = { 'actions.show_help', mode = 'n' },
         ['<CR>'] = 'actions.select',
@@ -43,7 +37,13 @@ return {
       },
     }
 
-    -- Keybindings
-    vim.keymap.set('n', '_', '<cmd>Oil<CR>', { desc = 'Open parent directory' })
+    -- Optional: Reapply transparency whenever Oil float is opened
+    vim.api.nvim_create_autocmd('FileType', {
+      pattern = 'oil',
+      callback = function()
+        vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = 'none', fg = 'none' })
+      end,
+    })
   end,
 }

@@ -55,3 +55,8 @@ vim.keymap.set('n', '<leader>tt', function()
   -- Enter insert mode automatically
   vim.cmd 'startinsert'
 end, { desc = 'Open terminal in new tab' })
+
+vim.keymap.set('n', '<leader>ts', '<cmd>ToggleContext<CR>', { desc = 'Toggle treesitter context', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>jc', function()
+  require('treesitter-context').go_to_context(vim.v.count1)
+end, { silent = true, desc = 'Jump to scope start' })

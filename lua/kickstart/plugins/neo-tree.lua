@@ -19,6 +19,9 @@ return {
         mappings = {
           ['\\'] = 'close_window',
         },
+        follow_current_file = true, -- track the file in current buffer
+        hijack_netrw_behavior = 'open_current',
+        use_libuv_file_watcher = true,
       },
     },
   },
