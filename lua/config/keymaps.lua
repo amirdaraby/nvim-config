@@ -60,3 +60,12 @@ vim.keymap.set('n', '<leader>ts', '<cmd>ToggleContext<CR>', { desc = 'Toggle tre
 vim.keymap.set('n', '<leader>jc', function()
   require('treesitter-context').go_to_context(vim.v.count1)
 end, { silent = true, desc = 'Jump to scope start' })
+
+vim.keymap.set('n', 'K', function()
+  vim.lsp.buf.hover {
+    border = 'rounded',
+    max_width = 70,
+    max_height = 20,
+    wrap = true,
+  }
+end, { desc = 'LSP hover with rounded border and minimal padding' })

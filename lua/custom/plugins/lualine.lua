@@ -5,9 +5,9 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        theme = 'auto',
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        theme = 'jellybeans',
+        component_separators = { left = '|', right = '|' },
+        section_separators = { left = '', right = '' }, -- no triangles
         disabled_filetypes = {
           statusline = {},
           winbar = {},
@@ -38,8 +38,20 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'diagnostics', 'filetype' },
+        lualine_c = { { 'filename', path = 1, shorting_target = 40 } },
+        lualine_x = {
+          {
+            'diagnostics',
+            symbols = {
+              error = ' ', -- heavy X
+              warn = ' ', -- triangle with exclamation
+              info = ' ', -- circled info
+              hint = ' ', -- question mark in circle
+            },
+            colored = true,
+          },
+          'filetype',
+        },
         lualine_y = {},
         lualine_z = { 'location' },
       },

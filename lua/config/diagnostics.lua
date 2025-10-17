@@ -1,8 +1,9 @@
 vim.diagnostic.config {
   severity_sort = true,
-  float = { border = 'rounded', source = 'if_many' },
+  float = { border = 'rounded' },
   -- underline = { severity = vim.diagnostic.severity.ERROR },
   underline = true,
+  virtual_lines = false,
   signs = vim.g.have_nerd_font and {
     text = {
       [vim.diagnostic.severity.ERROR] = '󰅚 ',
@@ -12,8 +13,9 @@ vim.diagnostic.config {
     },
   } or {},
   virtual_text = {
-    current_line = true,
+    current_line = false,
     source = 'if_many',
+    wrap = true,
     spacing = 2,
     format = function(diagnostic)
       local diagnostic_message = {
